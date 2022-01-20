@@ -13,7 +13,7 @@ PORT = int(config_file['ENV']['port'])
 TOKEN = int(config_file['API INTEGRATION']['finance'])
 
 app = Flask(__name__)
-app.config['SECRET-KEY'] = config_file['APP KEY']['key']
+app.config['SECRET-KEY'] = config_file['APP']['key']
 api_server = Api(app)
 
 parser = reqparse.RequestParser()
