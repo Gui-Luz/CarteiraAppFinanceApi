@@ -10,14 +10,14 @@ config_file.read(os.path.dirname(__file__) + '/config.ini')
 #ENV
 DEBUG = bool(config_file['ENV']['debug'])
 PORT = int(config_file['ENV']['port'])
-TOKEN = int(config_file['API INTEGRATION']['finance'])
+TOKEN = str(config_file['API INTEGRATION']['finance'])
 
 app = Flask(__name__)
 app.config['SECRET-KEY'] = config_file['APP']['secret_key']
 api_server = Api(app)
 
 parser = reqparse.RequestParser()
-parser.add_argument('token', type=int, default=None)
+parser.add_argument('token', type=str, default=None)
 
 
 class GetStocks(Resource):
