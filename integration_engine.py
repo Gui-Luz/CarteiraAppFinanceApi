@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup as bs
 import requests
 import psycopg2
 from datetime import datetime, date
+import threading
 
 config_file = configparser.ConfigParser()
 config_file.read(os.path.dirname(__file__) + '/config.ini')
@@ -160,7 +161,7 @@ def update_stock_info(stocks_info):
     logging.debug('[+] Stocks updated!')
 
 
-def main():
+def get_stocks():
     global ENV, URL
     clean_log_history()
     if ENV == 'production':
@@ -187,4 +188,10 @@ def main():
         logging.critical(f'[+] Error message: {available_stocks[1]}')
     logging.debug(f'[+] {datetime.now()}')
     logging.debug('[+] END')
+
+
+def main():
+    x = threading.Thread(target=get_stocks)
+    x.start()
+    return True
 
