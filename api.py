@@ -37,4 +37,4 @@ class GetStocks(Resource):
 api_server.add_resource(GetStocks, config_file['ENDPOINTS']['get_stocks'])
 
 if __name__ == '__main__':
-    app.run(debug=DEBUG, port=2000)
+    app.run(debug=DEBUG, port=PORT)
