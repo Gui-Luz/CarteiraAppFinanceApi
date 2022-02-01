@@ -16,7 +16,7 @@ RUN apt-get install -y wget --no-install-recommends
 RUN adduser --system --group --disabled-login bflaskappuser ; cd /home/bflaskappuser/
 RUN apt-get update -y ; apt-get upgrade -y
 RUN apt-get install -y python3-pip --no-install-recommends
-RUN wget -O get-pip.py 'https://bootstrap.pypa.io/get-pip.py' ; python get-pip.py --disable-pip-version-check --no-cache-dir
+RUN wget -O get-pip.py 'https://bootstrap.pypa.io/pip/3.6/get-pip.py' ; python get-pip.py --disable-pip-version-check --no-cache-dir
 # pip should be now pip3
 RUN pip --version ; rm -f get-pip.py
 
